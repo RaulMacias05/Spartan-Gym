@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes</title>
-    <link rel="stylesheet" href="estilogym.css">
-</head>
-<body id="s3">
+{% extends 'base.html' %}
 
-    <div class="content">
-        <div class="titulo-seccion">
-          <h1 class="titulo">Clientes</h1>
-          <hr>
-        </div>
+{% block content %}
+<div class="content">
+    <div class="titulo-seccion">
+        <h1 class="titulo">Clientes</h1>
+        <hr>
     </div>
-      
+</div>
 
-    <div class="content">
-        <button class="btn-registro">Registrar Nuevo Cliente</button>
-        <button class="btn-entrada">Registrar Entrada</button>
-        <button class="btn-salida">Registrar Salida</button>
+<div class="content">
+    <button class="btn-registro">Registrar Nuevo Cliente</button>
+    <button class="btn-entrada">Registrar Entrada</button>
+    <button class="btn-salida">Registrar Salida</button>
 
-    </div>
-</body>
-</html>
+</div>
+{% endblock content %}
