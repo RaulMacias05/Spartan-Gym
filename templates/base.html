@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Spartan Gym{% endblock title %}</title>
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+    <header>
+        <nav class="sidebar">
+            <img src="logospartan.png" alt="Logo Gimnasio" class="logo">
+            <h2>Spartan Gym</h2>
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="membresias.html">Membresías</a></li>
+                <li><a href="ventas.html">Ventas</a></li>
+                <li><a href="inventario.html">Inventario de productos</a></li>
+                <li><a href="reportes.html">Reportes</a></li>
+                <li><a href="#" id="cerrarSesion">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock content %}
+    {% comment %} {% block scripts %}{% endblock scripts %} {% endcomment %}
+</body>
+</html>
