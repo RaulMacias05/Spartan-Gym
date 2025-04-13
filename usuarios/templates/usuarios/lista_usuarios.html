@@ -1,0 +1,9 @@
+<h2>Usuarios registrados</h2>
+
+<ul>
+  {% for usuario in usuarios %}
+    <li>{{ usuario.username }} - {{ usuario.email }} - {{ usuario.get_rol_display }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'usuarios:registrar_usuario' %}">Registrar otro usuario</a>
