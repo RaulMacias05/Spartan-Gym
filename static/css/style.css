@@ -58,33 +58,26 @@ header ul{
 }
 
 header ul li{
-    /* width: 50%; */
-    padding: 1.5vh .7vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
     transition: all .3s ease;
     &:hover{
-        transform: scale(1.05);
+        transform: scale(1.1);
         z-index: 100;
         cursor: pointer;
-        border-bottom: 5px solid var(--select-tab-border);
-    }
-}
-
-header ul li:not(:last-child) {
-    border-bottom: 1px solid var(--select-tab-border);
-    &:hover{
-        border-bottom: 5px solid var(--select-tab-border);
     }
 }
 
 header ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5vh .7vw;
     text-align: center;
     text-decoration: none;
     color: white;
     font-size: 1.12rem;
+    &:hover{
+        color:#f1cfcf
+    }
 }
 
 img {
