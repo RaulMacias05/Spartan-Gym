@@ -53,3 +53,11 @@ body {
     padding: 0;
     display: flex;
 }
+
+.error{
+    color: rgb(255, 79, 79);
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
