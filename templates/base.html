@@ -11,21 +11,25 @@
 <body>
     <header>
         <nav class="sidebar">
-            <img src="{% static 'img/logospartan.png' %}" alt="Logo Gimnasio" class="logo">
-            <h2>Spartan Gym</h2>
+            <div class="title">
+                <img src="{% static 'img/logospartan.png' %}" alt="Logo Gimnasio" class="logo">
+                <h2>Sistema de operaciones</h2>
+            </div>
             <ul>
-                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="{% url 'core:inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'usuarios:usuarios' %}">Registro</a></li>
                 <li><a href="clientes.html">Clientes</a></li>
                 <li><a href="membresias.html">Membresías</a></li>
-                <li><a href="ventas.html">Ventas</a></li>
-                <li><a href="inventario.html">Inventario de productos</a></li>
+                <li><a href="{% url 'ventas:registrar_venta' %}">Ventas</a></li>
+                <li><a href="inventario.html">Inventario</a></li>
                 <li><a href="reportes.html">Reportes</a></li>
-                <li><a href="#" id="cerrarSesion">Cerrar Sesión</a></li>
             </ul>
+            <a href="#" id="cerrarSesion">Cerrar Sesión</a>
         </nav>
     </header>
-
-    {% block content %}{% endblock content %}
+    <section class="content">
+        {% block content %}{% endblock content %}
+    </section>
     {% comment %} {% block scripts %}{% endblock scripts %} {% endcomment %}
 </body>
 </html>
