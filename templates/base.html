@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bungee+Spice&display=swap" rel="stylesheet">
 
     <title>{% block title %}Spartan Gym{% endblock title %}</title>
     {% block extra_head %}{% endblock extra_head %}
@@ -19,14 +22,16 @@
             </div>
             <ul>
                 <li><a href="{% url 'core:inicio' %}">Inicio</a></li>
-                <li><a href="{% url 'usuarios:usuarios' %}">Registro</a></li>
+                <li><a href="{% url 'usuarios:usuarios' %}">Usuarios</a></li>
                 <li><a href="clientes.html">Clientes</a></li>
                 <li><a href="membresias.html">Membresías</a></li>
                 <li><a href="{% url 'ventas:registrar_venta' %}">Ventas</a></li>
                 <li><a href="inventario.html">Inventario</a></li>
                 <li><a href="reportes.html">Reportes</a></li>
             </ul>
-            <a href="{% url 'usuarios:signout' %}" id="cerrarSesion">Cerrar Sesión</a>
+            <div class="logout_cont">
+                <a href="{% url 'usuarios:signout' %}" class="logout">CERRAR SESIÓN</a>
+            </div>
         </nav>
     </header>
     <section class="content">

@@ -9,22 +9,18 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-    <div class="container">
-        <img src="{% static 'img/logospartan.png' %}" alt="Logo Gimnasio" class="logo">
+    <form method="post">
+        <img src="{% static 'img/helmet-weights.png' %}" alt="Logo Gimnasio" class="logo">
         <h2>Inicio de Sesión</h2>
-        <form method="post">
-            
-            {% csrf_token %}
-            
-            {% if error %}
-            <p class="error">{{ error }}</p>
-            {% endif %}
-
-            {{ form }}
-
-            <button>Iniciar Sesión</button>
-        </form>
-    </div>
+    
+        {% csrf_token %}
+    
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        {{ form }}
+        <button>Iniciar Sesión</button>
+    </form>
 
     <script>
         document.getElementById("registroForm").addEventListener("submit", function(event) {
