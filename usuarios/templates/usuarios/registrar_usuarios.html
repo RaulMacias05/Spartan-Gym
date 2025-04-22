@@ -14,7 +14,25 @@
 
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+  
+  <p><label for="first_name">Nombre:</label><br>{{ form.first_name }}</p>
+
+  <p><label for="primer_apellido">Primer Apellido:</label><br>{{ form.primer_apellido }}</p>
+
+  <p><label for="segundo_apellido">Segundo Apellido:</label><br>{{ form.segundo_apellido }}</p>
+
+  <p><label for="telefono">Teléfono:</label><br>{{ form.telefono }}</p>
+
+  <p><label for="email">Correo Electrónico:</label><br>{{ form.email }}</p>
+
+  <p><label for="rol">Rol:</label><br>{{ form.rol }}</p>
+
+  <p><label for="username">Nombre de usuario:</label><br>{{ form.username }}</p>
+
+  <p><label for="password1">Contraseña:</label><br>{{ form.password1 }}</p>
+
+  <p><label for="password2">Confirmar Contraseña:</label><br>{{ form.password2 }}</p>
+
 
   <button type="submit">Registrar</button>
 </form>

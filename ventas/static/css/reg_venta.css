@@ -1,0 +1,44 @@
+.buscador {
+    margin-bottom: 20px;
+    left: 30%;
+  }
+  
+.buscador input {
+    padding: 10px;
+    width: 50%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+.producto {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 220px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+.producto h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+.producto p {
+    margin: 5px 0;
+  }
+
