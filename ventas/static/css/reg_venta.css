@@ -28,7 +28,7 @@
     transition: transform 0.3s;
   }
 
-  .producto:hover {
+.producto:hover {
     transform: scale(1.05);
 }
 
