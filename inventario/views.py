@@ -1,15 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import CrearProductoForm
+from .models import Producto
 
 # Create your views here.
 def inventario(request):
-    return render(request, 'inventario/inventario.html')
+    productos = Producto.objects.all()
+    return render(request, 'inventario/inventario.html', {'productos': productos})
 
 def crear_producto(request):    
     if request.method == 'POST':
-        # Aquí puedes manejar el formulario para crear un nuevo producto
-        pass  # Reemplaza esto con tu lógica de creación de producto
+        form = CrearProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario:inventario')  # Redirige a la vista de inventario después de guardar el producto
+    else:
+        form = CrearProductoForm()
 
-    return render(request, 'inventario/crear_producto.html')
+    return render(request, 'inventario/crear_producto.html', {'form': form})
 
 def editar_producto(request, producto_id):
     if request.method == 'POST':
