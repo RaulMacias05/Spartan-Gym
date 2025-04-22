@@ -1,3 +1,9 @@
+.contenedor{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
 .buscador {
     margin-bottom: 20px;
     left: 30%;
@@ -14,7 +20,6 @@
 .productos {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
   }
   
@@ -42,3 +47,6 @@
     margin: 5px 0;
   }
 
+.producto img {
+  width: 80%;
+}

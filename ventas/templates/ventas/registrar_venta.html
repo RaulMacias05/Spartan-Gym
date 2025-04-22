@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="{% static 'css/reg_venta.css' %}">
+<link rel="stylesheet" href="{% static 'ventas/css/reg_venta.css' %}">
 {% endblock extra_head %}
 
 
@@ -11,97 +11,98 @@
 
 <h1>Registrar Venta</h1>
 
-<div class="content">
-        <div class="buscador">
-          <input type="text" id="search" placeholder="Buscar producto...">
-        </div>
-      
-        <div class="productos">
-          <div class="producto">
-            <h3>Agua Ciel 1L</h3>
-            <p>Precio: $20</p>
-          </div>
-          <div class="producto">
-            <h3>Powerade 600ml Moras</h3>
-            <p>Precio: $25</p>
-          </div>
-          <div class="producto">
-            <h3>Powerade 600ml Frutas</h3>
-            <p>Precio: $25</p>
-          </div>
-          <div class="producto">
-            <h3>Monster 473 ml Energy Mango</h3>
-            <p>Precio: $35</p>
-          </div>
-          <div class="producto">
-            <h3>Monster 473 ml Energy Zero Ultra</h3>
-            <p>Precio: $35</p>
-          </div>
-          <div class="producto">
-            <h3>Monster 473 ml Energy</h3>
-            <p>Precio: $35</p>
-          </div>
-          <div class="producto">
-            <h3>Monster 473 ml Energy Sandía</h3>
-            <p>Precio: $25</p>
-          </div>
-          <div class="producto">
-            <h3>Vive 100 600ml</h3>
-            <p>Precio: $25</p>
-          </div>
-          <div class="producto">
-            <h3>Creatina 250g EVOLUTION</h3>
-            <p>Precio: $250</p>
-          </div>
-          <div class="producto">
-            <h3>Creatina 500g Meta Nutrition</h3>
-            <p>Precio: $380</p>
-          </div>
-          <div class="producto">
-            <h3>Creatina 1kg Meta Nutrition</h3>
-            <p>Precio: $590</p>
-          </div>
-          <div class="producto">
-            <h3>Proteina Whey 5lbs Vainilla</h3>
-            <p>Precio: $630</p>
-          </div>
-          <div class="producto">
-            <h3>Proteina Whey 5llbs Brownie</h3>
-            <p>Precio: $630</p>
-          </div>
-          <div class="producto">
-            <h3>Proteina Meta Nutrition 5lbs Chocolate</h3>
-            <p>Precio: $500</p>
-          </div>
-          <div class="producto">
-            <h3>Proteina Whey Gold Chocolate</h3>
-            <p>Precio: $1550</p>
-          </div>
-          <div class="producto">
-            <h3>Barra de proteina Chocolate</h3>
-            <p>Precio: $35</p>
-          </div>
-          <div class="producto">
-            <h3>Barra de proteina Cookies and Cream</h3>
-            <p>Precio: $35</p>
-          </div>
-          <div class="producto">
-            <h3>Pre-entreno Psychotich 30 servicios</h3>
-            <p>Precio: $350</p>
-          </div>
-          <div class="producto">
-            <h3>Pre-entreno Animal Fury 35 servicios</h3>
-            <p>Precio: $580</p>
-          </div>
-          <div class="producto">
-            <h3>Pre-entreno Animal Pump 35 servicios</h3>
-            <p>Precio: $800</p>
-          </div>
-        </div>
-      </div>
+<div class="buscador">
+  <input type="text" id="search" placeholder="Buscar producto...">
+</div>
+
+<div class="productos">
+  <div class="producto">
+    <img src="{% static 'ventas/img/barra_chocolate.png' %}" alt="">
+    <h3>Agua Ciel 1L</h3>
+    <p>Precio: $20</p>
+  </div>
+  <div class="producto">
+    <img src="{% static 'ventas/img/barra_cookies.jpg' %}" alt="">
+    <h3>Powerade 600ml Moras</h3>
+    <p>Precio: $25</p>
+  </div>
+  <div class="producto">
+    
+    <h3>Powerade 600ml Frutas</h3>
+    <p>Precio: $25</p>
+  </div>
+  <div class="producto">
+    <h3>Monster 473 ml Energy Mango</h3>
+    <p>Precio: $35</p>
+  </div>
+  <div class="producto">
+    <h3>Monster 473 ml Energy Zero Ultra</h3>
+    <p>Precio: $35</p>
+  </div>
+  <div class="producto">
+    <h3>Monster 473 ml Energy</h3>
+    <p>Precio: $35</p>
+  </div>
+  <div class="producto">
+    <h3>Monster 473 ml Energy Sandía</h3>
+    <p>Precio: $25</p>
+  </div>
+  <div class="producto">
+    <h3>Vive 100 600ml</h3>
+    <p>Precio: $25</p>
+  </div>
+  <div class="producto">
+    <h3>Creatina 250g EVOLUTION</h3>
+    <p>Precio: $250</p>
+  </div>
+  <div class="producto">
+    <h3>Creatina 500g Meta Nutrition</h3>
+    <p>Precio: $380</p>
+  </div>
+  <div class="producto">
+    <h3>Creatina 1kg Meta Nutrition</h3>
+    <p>Precio: $590</p>
+  </div>
+  <div class="producto">
+    <h3>Proteina Whey 5lbs Vainilla</h3>
+    <p>Precio: $630</p>
+  </div>
+  <div class="producto">
+    <h3>Proteina Whey 5llbs Brownie</h3>
+    <p>Precio: $630</p>
+  </div>
+  <div class="producto">
+    <h3>Proteina Meta Nutrition 5lbs Chocolate</h3>
+    <p>Precio: $500</p>
+  </div>
+  <div class="producto">
+    <h3>Proteina Whey Gold Chocolate</h3>
+    <p>Precio: $1550</p>
+  </div>
+  <div class="producto">
+    <h3>Barra de proteina Chocolate</h3>
+    <p>Precio: $35</p>
+  </div>
+  <div class="producto">
+    <h3>Barra de proteina Cookies and Cream</h3>
+    <p>Precio: $35</p>
+  </div>
+  <div class="producto">
+    <h3>Pre-entreno Psychotich 30 servicios</h3>
+    <p>Precio: $350</p>
+  </div>
+  <div class="producto">
+    <h3>Pre-entreno Animal Fury 35 servicios</h3>
+    <p>Precio: $580</p>
+  </div>
+  <div class="producto">
+    <h3>Pre-entreno Animal Pump 35 servicios</h3>
+    <p>Precio: $800</p>
+  </div>
+</div>
 
 <script>
-  const searchInput = document.getElementById(".search");
+  const searchInput = document.getElementById("search");
   const productos = document.querySelectorAll(".producto");
 
   searchInput.addEventListener("input", function () {
