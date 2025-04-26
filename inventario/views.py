@@ -4,8 +4,9 @@ from .models import Producto
 
 # Create your views here.
 def inventario(request):
-    productos = Producto.objects.all()
-    return render(request, 'inventario/inventario.html', {'productos': productos})
+    return render(request, 'inventario/inventario.html', {
+        'productos': Producto.objects.all()
+    })
 
 def crear_producto(request):    
     if request.method == 'POST':

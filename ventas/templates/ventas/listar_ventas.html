@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'ventas/css/listar_ventas.css' %}">
+{% endblock extra_head %}
+
+{% block title %}Ventas{% endblock title %}
+
+{% block content %}
+<h1>Ventas</h1>
+
+<div class="barra_sup">
+  <input type="text" id="search" placeholder="Buscar venta...">
+  <a href="{% url 'ventas:registrar_venta' %}" class="reg_producto">Registrar Venta</a>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuario responsable</th>
+      {% comment %} <th>Cliente</th> {% endcomment %}
+      <th>Fecha</th>
+      <th>Total</th>
+      <th>Detalles</th>
+    </tr>
+  </thead>
+  <tbody id="ventas_table_body">
+    {% for venta in ventas %}
+    <tr class="venta" data-id="{{ venta.id }}">
+      <td>{{ venta.id }}</td>
+      <td>{{ venta.usuario.username }}</td>
+      {% comment %} <td>{{ venta.cliente }}</td> {% endcomment %}
+      <td>{{ venta.fecha_venta }}</td>
+      <td>${{ venta.monto_total }}</td>
+      {% comment %} <td><a href="{% url 'ventas:detalles_venta' venta.id %}">Ver Detalles</a></td> {% endcomment %}
+    </tr>
+
+    {% empty %}
+    <tr>
+      <td colspan="5" class="no_products">No hay ventas registradas.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+  const searchInput = document.getElementById("search");
+  const ventasTableBody = document.getElementById("ventas_table_body");
+  const ventasRows = ventasTableBody.querySelectorAll(".venta");
+
+  searchInput.addEventListener("input", function () {
+    const searchTerm = searchInput.value.toLowerCase();
+    ventasRows.forEach(row => {
+      const cells = row.querySelectorAll("td");
+      let found = false;
+      cells.forEach(cell => {
+        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+          found = true;
+        }
+      });
+      if (found) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  });
+</script>
+
+{% endblock scripts %}

@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    font-family: "Anton", sans-serif;
+    background-color: var(--header-bg-color);
+    color: rgb(255, 240, 240);
+    border-radius: 15px;
+}
+
+th {
+    font-weight: 100;
+    font-size: 1.05rem;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.no_products {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}

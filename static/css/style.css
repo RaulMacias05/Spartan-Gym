@@ -3,6 +3,8 @@
     --select-tab-border: #983b09;
     --select-tab-shadow: #e8590d;
     --button-shadow: #410101;
+    --header-h2-color: rgb(255, 207, 207);
+    --header-text-color: rgb(255, 225, 225);
 }
   
 
@@ -12,11 +14,12 @@ body {
     display: grid;
     grid-template-columns: 280px 3fr;
     grid-template-rows: 1fr;
-    gap: 5vw;
+    gap: 2vw;
     height: 100vh;
 }
 
 header {
+    font-family: "Anton", sans-serif;
     grid-column: 1;
     height: 100vh;
     background: var(--header-bg-color);
@@ -44,9 +47,8 @@ header .title{
 }
 
 header h2{
-    font-family: "Anton", sans-serif;
     font-weight: 100;
-    color: rgb(255, 207, 207);
+    color: var(--header-h2-color);
     font-size: 1.3rem;
     margin-bottom: 0;
 }
@@ -73,9 +75,8 @@ header ul li{
 }
 
 header ul li a{
-    font-family: "Anton", sans-serif;
     font-size: 1.3rem;
-    color: rgb(255, 225, 225);
+    color: var(--header-text-color);
     display: block;
     padding: 1.6vh 0;
     text-align: center;
@@ -106,7 +107,7 @@ img {
     text-decoration: none;
     font-family: "Anton", sans-serif;
     font-size: 1.1rem;
-    color: rgb(255, 207, 207);
+    color: var(--header-h2-color);
     box-shadow: 0 -2px 5px var(--button-shadow) inset;
     transition: box-shadow .2s ease-out;
     &:hover{
@@ -115,6 +116,8 @@ img {
 }
 
 .content{
+    padding-left: 3vw;
     grid-column: 2;
     overflow-y: auto;
+    width: 90%;
 }
