@@ -12,29 +12,56 @@
 
 <h2>Registrar nuevo usuario</h2>
 
-<form method="post">
+<form method="post" class="registro-form">
   {% csrf_token %}
   
-  <p><label for="first_name">Nombre:</label><br>{{ form.first_name }}</p>
+  <div class="campo">
+    <label for="first_name">Nombre:</label>
+    {{ form.first_name }}
+  </div>
 
-  <p><label for="primer_apellido">Primer Apellido:</label><br>{{ form.primer_apellido }}</p>
+  <div class="campo">
+    <label for="primer_apellido">Primer Apellido:</label>
+    {{ form.primer_apellido }}
+  </div>
 
-  <p><label for="segundo_apellido">Segundo Apellido:</label><br>{{ form.segundo_apellido }}</p>
+  <div class="campo">
+    <label for="segundo_apellido">Segundo Apellido:</label>
+    {{ form.segundo_apellido }}
+  </div>
 
-  <p><label for="telefono">Teléfono:</label><br>{{ form.telefono }}</p>
+  <div class="campo">
+    <label for="telefono">Teléfono:</label>
+    {{ form.telefono }}
+  </div>
 
-  <p><label for="email">Correo Electrónico:</label><br>{{ form.email }}</p>
+  <div class="campo">
+    <label for="email">Correo Electrónico:</label>
+    {{ form.email }}
+  </div>
 
-  <p><label for="rol">Rol:</label><br>{{ form.rol }}</p>
+  <div class="campo">
+    <label for="rol">Rol:</label>
+    {{ form.rol }}
+  </div>
 
-  <p><label for="username">Nombre de usuario:</label><br>{{ form.username }}</p>
+  <div class="campo">
+    <label for="username">Nombre de usuario:</label>
+    {{ form.username }}
+  </div>
 
-  <p><label for="password1">Contraseña:</label><br>{{ form.password1 }}</p>
+  <div class="campo">
+    <label for="password1">Contraseña:</label>
+    {{ form.password1 }}
+  </div>
 
-  <p><label for="password2">Confirmar Contraseña:</label><br>{{ form.password2 }}</p>
-
+  <div class="campo">
+    <label for="password2">Confirmar Contraseña:</label>
+    {{ form.password2 }}
+  </div>
 
   <button type="submit">Registrar</button>
 </form>
+
 
 {% endblock content %}
