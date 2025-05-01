@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .forms import registro_cliente
+from .models import Clientes
 
 # Create your views here.
 def clientes(request):
@@ -6,10 +8,12 @@ def clientes(request):
 
 def crear_cliente(request):
     if request.method == 'POST':
-        # Aquí puedes manejar el formulario para crear un nuevo cliente
-        pass  # Reemplaza esto con tu lógica de creación de cliente
+        
+    elif request.method == 'GET':
+        form=registro_cliente
 
-    return render(request, 'clientes/crear_cliente.html')
+
+    return render(request, 'clientes/crear_cliente.html',{"form":form})
 
 def editar_cliente(request, cliente_id):
     if request.method == 'POST':
