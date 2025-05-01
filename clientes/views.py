@@ -8,10 +8,9 @@ def clientes(request):
 
 def crear_cliente(request):
     if request.method == 'POST':
-        
+        pass
     elif request.method == 'GET':
         form=registro_cliente
-
 
     return render(request, 'clientes/crear_cliente.html',{"form":form})
 
