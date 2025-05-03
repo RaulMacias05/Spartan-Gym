@@ -1,18 +1,25 @@
 from django.shortcuts import render
-from .forms import registro_cliente
+from .forms import RegistrarClienteForm
 from .models import Clientes
 
 # Create your views here.
 def clientes(request):
-    return render(request, 'clientes/clientes.html')
+    return render(request, 'clientes/clientes.html', {
+        'clientes': Clientes.objects.all()
+    })
 
 def crear_cliente(request):
     if request.method == 'POST':
-        pass
+        form = RegistrarClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'clientes/crear_cliente.html', {"form":form, "mensaje":"Cliente creado exitosamente"})
+        else:
+            return render(request, 'clientes/crear_cliente.html', {"form":form, "mensaje":"Error al crear el cliente"})
     elif request.method == 'GET':
-        form=registro_cliente
+        form = RegistrarClienteForm()
 
-    return render(request, 'clientes/crear_cliente.html',{"form":form})
+    return render(request, 'clientes/crear_cliente.html', {"form":form})
 
 def editar_cliente(request, cliente_id):
     if request.method == 'POST':

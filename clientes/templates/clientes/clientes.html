@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}">
 {% endblock extra_head %}
@@ -7,5 +9,15 @@
 {% block title %}Clientes{% endblock title %}
 
 {% block content %}
+
 <h1>Clientes</h1>
+
+<a href="{% url 'clientes:crear_cliente' %}" class="btn btn-primary">Crear Cliente</a>
+
+<ul>
+    {% for cliente in clientes %}
+        <li>{{ cliente.nombre }} - {{ cliente.correo }} - {{ cliente.telefono }}</li>
+    {% endfor %}
+</ul>
+    
 {% endblock content %}
