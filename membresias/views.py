@@ -1,13 +1,22 @@
 from django.shortcuts import render
+from .forms import MembresiaForm
+from django.shortcuts import render, redirect
+from .models import Membresia
 
 # Create your views here.
 def membresias(request):
-    return render(request, 'membresias/membresias.html')
+    membresias = Membresia.objects.all()
+    return render(request, 'membresias/membresias.html' , {'membresias': membresias})
+        
 
 def crear_membresia(request):
     if request.method == 'POST':
-        # Aquí puedes manejar el formulario para crear una nueva membresía
-        pass  # Reemplaza esto con tu lógica de creación de membresía
+        form = MembresiaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('membresias:crear_membresia') 
+    else:
+        form = MembresiaForm()
 
     return render(request, 'membresias/crear_membresia.html')
 
