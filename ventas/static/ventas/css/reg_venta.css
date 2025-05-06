@@ -29,7 +29,8 @@
     width: 220px;
     padding: 15px;
     text-align: center;
-    transition: transform 0.3s;
+    cursor: pointer;
+    transition:  0.3s;
     z-index: 100;
   }
 
@@ -104,4 +105,28 @@
   /* color: white; */
   /* margin-right: 3vh; */
   font-size: 1.3rem;
+}
+
+.venta_modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  z-index: 1000;
+}
+
+.modal_overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

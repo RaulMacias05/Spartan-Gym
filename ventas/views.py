@@ -11,8 +11,11 @@ from django.shortcuts import render
 def ventas(request):
     return render(request, 'ventas/ventas.html')
 
+def listar_ventas(request):
+    return render(request, 'ventas/listar_ventas.html', {
+        'ventas': Venta.objects.all()
+        })
 
-@csrf_exempt
 def registrar_venta(request):
     if request.method == "POST":
         form = VentaForm(request.POST)
@@ -49,7 +52,3 @@ def registrar_venta(request):
             'form': form
         })
         
-def listar_ventas(request):
-    return render(request, 'ventas/listar_ventas.html', {
-        'ventas': Venta.objects.all()
-        })

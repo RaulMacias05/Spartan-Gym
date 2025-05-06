@@ -37,116 +37,24 @@
 </div>
 
 <!-- filepath: c:\Users\steme\OneDrive\Documents\Sexto Semestre\Metodologías del Desarrollo de Software\PIA\Spartan-Gym\ventas\templates\ventas\registrar_venta.html -->
-<div id="venta_modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ddd; z-index: 1000;">
+<div class="venta_modal" id="venta_modal">
   <h2>Registrar Venta</h2>
   <form id="venta_form" method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <p id="cambio_text">Cambio: </p>
     <button type="button" id="confirmar_venta">Confirmar Venta</button>
     <button type="button" id="cancelar_venta">Cancelar</button>
   </form>
 </div>
-<div id="modal_overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+<div class="modal_overlay" id="modal_overlay"></div>
 {% endblock content %}
-
 
 
 
 {% block scripts %}
 <script>
-  const searchInput = document.getElementById("search");
-  const productos = document.querySelectorAll(".producto");
-  const totalBar = document.getElementById("venta_container");
-  const totalText = document.getElementById("total_text");
-  const registrarVentaBtn = document.getElementById("btn_registrar_venta");
-  const confirmarVentaBtn = document.getElementById("confirmar_venta");
-  const ventaForm = document.getElementById("venta_form");
-  const ventaModal = document.getElementById("venta_modal");
-  const modalOverlay = document.getElementById("modal_overlay");
-  const cancelarVentaBtn = document.getElementById("cancelar_venta");
-  
-  let selectedProducts = [];
-  let total = 0;
-
-  // Filtrar productos por nombre
-  searchInput.addEventListener("input", function () {
-    const searchTerm = searchInput.value.toLowerCase();
-    productos.forEach(producto => {
-      const nombre = producto.querySelector("h3").textContent.toLowerCase();
-      producto.style.display = nombre.includes(searchTerm) ? "block" : "none";
-    });
-  });
-
-  // Seleccionar productos y actualizar total
-  productos.forEach(prod => {
-    prod.addEventListener("click", function () {
-      const id_prod = prod.dataset.id;
-      const precio = parseFloat(prod.querySelector("p").textContent.replace("Precio: $", ""));
-      const producto = document.getElementById("prod_" + id_prod);
-
-      if (producto.classList.contains("selected")) {
-        producto.classList.remove("selected");
-        producto.style.border = "none";
-        selectedProducts = selectedProducts.filter(id => id !== id_prod);
-        total -= precio;
-      } else {
-        producto.classList.add("selected");
-        producto.style.border = "1px solid rgb(116, 255, 116)";
-        selectedProducts.push(id_prod);
-        total += precio;
-      }
-
-      // Actualizar barra de total
-      if (selectedProducts.length > 0) {
-        totalBar.style.marginBottom = "0px";
-        totalText.textContent = `Total: $${total.toFixed(2)}`;
-      } else {
-        totalBar.style.marginBottom = "-100px";
-      }
-    });
-  });
-
-  // Enviar los datos al servidor al hacer clic en el botón de registrar venta
-  registrarVentaBtn.addEventListener("click", function () {
-    if (selectedProducts.length === 0) {
-      alert("No has seleccionado ningún producto.");
-      return;
-    }
-
-    // Mostrar el modal de venta
-    ventaModal.style.display = "block";
-    modalOverlay.style.display = "block";
-  });
-
-  // Mostrar el modal de venta
-  confirmarVentaBtn.addEventListener("click", function () {
-    const formData = new FormData(ventaForm);
-    formData.append("productos", JSON.stringify(selectedProducts));
-    formData.append("total", total);
-  
-    fetch("{% url 'ventas:registrar_venta' %}", {
-      method: "POST",
-      headers: {
-        "X-CSRFToken": "{{ csrf_token }}"
-      },
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === "success") {
-          alert(data.message);
-          window.location.reload(); // Recargar la página después de registrar la venta
-        } else {
-          alert("Error al registrar la venta: " + data.message);
-        }
-      })
-      .catch(error => console.error("Error:", error));
-  });
-
-  // Cerrar el modal de venta
-  cancelarVentaBtn.addEventListener("click", function () {
-    ventaModal.style.display = "none";
-    modalOverlay.style.display = "none";
-  });
+  const registrarVentaUrl = "{% url 'ventas:registrar_venta' %}";
 </script>
+<script src="{% static 'ventas/js/registrar_venta.js' %}"></script>
 {% endblock scripts %}
