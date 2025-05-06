@@ -34,6 +34,22 @@
                 <td>{{ cliente.nombre }}</td>
                 <td>{{ cliente.correo }}</td>
                 <td>{{ cliente.telefono }}</td>
+
+                {% with hoy=now|date:"Y-m-d" %}
+                {% for registro in cliente.registroasistencia_set.all %}
+                    {% if registro.fecha|date:"Y-m-d" == hoy %}
+                        {% if not registro.hora_entrada %}
+                            <a href="{% url 'clientes:registrar_asistencia' cliente.id %}" class="btn btn-primary">Registrar entrada</a>
+                        {% elif not registro.hora_salida %}
+                            <a href="{% url 'clientes:registrar_asistencia' cliente.id %}" class="btn btn-danger">Registrar salida</a>
+                        {% else %}
+                            Ya registró entrada y salida
+                        {% endif %}
+                    {% endif %}
+                {% empty %}
+                    <a href="{% url 'clientes:registrar_asistencia' cliente.id %}" class="btn btn-primary">Registrar entrada</a>
+                {% endfor %}
+            {% endwith %}
             </tr>
             {% empty %}
             <tr>
