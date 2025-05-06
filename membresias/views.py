@@ -10,15 +10,30 @@ def membresias(request):
         
 
 def crear_membresia(request):
+    cambio = None
+    precio_membresia = 100  # ajusta según tu lógica real
+
     if request.method == 'POST':
         form = MembresiaForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('membresias:crear_membresia') 
+            metodo_pago = form.cleaned_data['metodo_pago']
+            monto_pagado = form.cleaned_data['monto_pagado']
+
+            if metodo_pago == 'efectivo':
+                cambio = monto_pagado - precio_membresia
+                if cambio < 0:
+                    form.add_error('monto_pagado', 'El monto es insuficiente.')
+                else:
+                    form.save()
+                    return redirect('membresias:crear_membresia')
+            else:
+                form.save()
+                return redirect('membresias:crear_membresia')
     else:
         form = MembresiaForm()
 
-    return render(request, 'membresias/crear_membresia.html')
+    return render(request, 'membresias/crear_membresia.html', {'form': form, 'cambio': cambio})
+
 
 def editar_membresia(request, membresia_id):
     if request.method == 'POST':
