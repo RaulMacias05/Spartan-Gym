@@ -12,12 +12,54 @@
 
 <h1>Clientes</h1>
 
-<a href="{% url 'clientes:crear_cliente' %}" class="btn btn-primary">Crear Cliente</a>
 
-<ul>
-    {% for cliente in clientes %}
-        <li>{{ cliente.nombre }} - {{ cliente.correo }} - {{ cliente.telefono }}</li>
-    {% endfor %}
-</ul>
+
+<div class="barra_sup">
+    <input type="text" id="search" placeholder="Buscar usuario...">
+    <a href="{% url 'clientes:crear_cliente' %}" class="reg_producto">Registrar otro cliente</a>
+</div>
+
+<div class="table_container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.correo }}</td>
+                <td>{{ cliente.telefono }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="no_products">No hay clientes registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+  const searchInput = document.getElementById("search");
+  const filas = document.querySelectorAll("tbody tr");
+
+  searchInput.addEventListener("input", function () {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    filas.forEach(fila => {
+      const textoFila = fila.textContent.toLowerCase();
+      if (textoFila.includes(searchTerm)) {
+        fila.style.display = "";
+      } else {
+        fila.style.display = "none";
+      }
+    });
+  });
+</script>
     
 {% endblock content %}
