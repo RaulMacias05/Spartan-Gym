@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import clientes, crear_cliente, editar_cliente, eliminar_cliente,registrar_asistencia
+from .views import clientes, crear_cliente, editar_cliente, eliminar_cliente
 from . import views
 
 app_name = 'clientes'
