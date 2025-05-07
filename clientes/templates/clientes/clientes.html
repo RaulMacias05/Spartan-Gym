@@ -16,7 +16,7 @@
 
 <div class="barra_sup">
     <input type="text" id="search" placeholder="Buscar usuario...">
-    <a href="{% url 'clientes:crear_cliente' %}" class="reg_producto">Registrar otro cliente</a>
+    <a href="{% url 'clientes:crear_cliente' %}" class="reg_cliente">Registrar otro cliente</a>
 </div>
 
 <div class="table_container">
@@ -73,10 +73,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const botones = document.querySelectorAll('.reg_producto');
-
+    
         botones.forEach(boton => {
             boton.addEventListener('click', function (e) {
-                e.preventDefault(); // evita que se mande la solicitud
+                e.preventDefault();
                 if (this.textContent.includes('entrada')) {
                     this.textContent = 'Registrar salida';
                 } else if (this.textContent.includes('salida')) {
