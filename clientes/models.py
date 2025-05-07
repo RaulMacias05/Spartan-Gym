@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import date
 
 class Clientes(models.Model):
     nombre=models.CharField(max_length=100)
@@ -9,6 +10,14 @@ class Clientes(models.Model):
     
     def __str__(self):
         return self.nombre
+    
+    @property
+    def membresia_activa(self):
+        try:
+            membresia = self.membresia_set.order_by('-fecha_vencimiento').first()
+            return bool(membresia and membresia.activa and membresia.fecha_vencimiento >= date.today())
+        except:
+            return False
 
 
 class RegistroAsistencia(models.Model):
