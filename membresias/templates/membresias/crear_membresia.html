@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="{% static 'membresias/css/membresias.css' %}">
+<link rel="stylesheet" href="{% static 'membresias/css/crear_membresia.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
 <h2>Crear Membresía</h2>
-<form method="post">
+<form method="post" class="registro-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
+    <button type="submit" >Guardar</button>
 </form>
 
 {% if cambio is not None %}

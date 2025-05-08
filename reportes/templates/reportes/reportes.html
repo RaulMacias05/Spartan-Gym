@@ -5,6 +5,8 @@
 {% block content %}
 <h1>Reportes</h1>
 
+
+
 <!-- Reporte de Ventas -->
 <h2>Reporte de Ventas</h2>
 <p><strong>Total de Ventas:</strong> ${{ total_ventas }}</p>
@@ -33,6 +35,7 @@
     </tbody>
 </table>
 
+<a href="{% url 'reportes:exportar_ventas_excel' %}" class="btn btn-success">Exportar Ventas a Excel</a>
 <!-- Reporte de Clientes -->
 <h2>Reporte de Clientes</h2>
 <p><strong>Total de Clientes:</strong> {{ total_clientes }}</p>
@@ -61,34 +64,8 @@
     </tbody>
 </table>
 
-<!-- Reporte de Productos -->
-<h2>Reporte de Productos</h2>
-<p><strong>Total de Productos:</strong> {{ total_productos }}</p>
-<table border="1" cellpadding="8">
-    <thead>
-        <tr>
-            <th>Nombre del Producto</th>
-            <th>Precio</th>
-            <th>Cantidad en Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for producto in productos %}
-        <tr>
-            <td>{{ producto.nombre }}</td>
-            <td>${{ producto.precio }}</td>
-            <td>{{ producto.stock }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">No hay productos registrados.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<a href="{% url 'reportes:exportar_clientes_excel' %}" class="btn-export">Exportar Clientes a Excel</a>
 
-<a href="{% url 'reportes:exportar_clientes_excel' %}" class="btn btn-success">
-    Exportar Clientes a Excel
-</a>
+
 
 {% endblock content %}

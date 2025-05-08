@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="{% static 'inventario/css/registrar_producto.css' %}">
+<link rel="stylesheet" href="{% static 'inventario/css/crear_producto.css' %}">
 {% endblock extra_head %}
 
 {% block title %}Registrar Producto{% endblock title %}
@@ -12,12 +12,12 @@
 
 <h1>Registrar Producto</h1>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" class= "registro-form" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Registrar</button>
 </form>
 
-<a href="{% url 'inventario:inventario' %}">Regresar</a>
+<a href="{% url 'inventario:inventario' %}" >Regresar</a>
 
 {% endblock content %}

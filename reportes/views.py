@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 import openpyxl
 from django.http import HttpResponse
 from datetime import date
+from ventas.models import Venta
+from openpyxl import Workbook
 
 
 
@@ -113,7 +115,11 @@ def exportar_clientes_excel(request):
 
     # Datos
     for cliente in Clientes.objects.all():
-        membresia_activa = cliente.membresias.filter(activa=True, fecha_vencimiento__gte=date.today()).exists()
+        try:
+            membresia_activa = cliente.membresia_set.filter(activa=True, fecha_vencimiento__gte=date.today()).exists()
+        except Exception as e:
+            membresia_activa = False  # En caso de error, asumimos que no tiene membresía activa
+
         ws.append([
             cliente.nombre,
             cliente.correo,
@@ -122,9 +128,40 @@ def exportar_clientes_excel(request):
             "Sí" if membresia_activa else "No"
         ])
 
+
    
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     hoy = date.today().strftime('%Y-%m-%d')
     response['Content-Disposition'] = f'attachment; filename=clientes_{hoy}.xlsx'
     wb.save(response)
     return response
+
+
+def exportar_ventas_excel(request):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Ventas"
+
+    # Encabezados
+    ws.append(["Fecha", "Monto Total", "Monto Pagado", "Cambio"])
+
+    # Datos
+    for venta in Venta.objects.all().order_by('-fecha_venta'):
+        ws.append([
+            venta.fecha_venta.strftime("%Y-%m-%d %H:%M"),
+            float(venta.monto_total),
+            float(venta.monto_pagado),
+            float(venta.cambio)
+        ])
+
+    # Preparar respuesta
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    hoy = date.today().strftime('%Y-%m-%d')
+    response['Content-Disposition'] = f'attachment; filename=ventas_{hoy}.xlsx'
+
+    wb.save(response)
+    return response
+
+
