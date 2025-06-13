@@ -6,7 +6,6 @@ app_name = 'membresias'
 
 urlpatterns = [
     path('', membresias, name='membresias'),
-    path('membresias/', views.membresias, name='membresias'),
     path('crear/', views.crear_membresia, name='crear_membresia'),
     path('editar/<int:membresia_id>/', editar_membresia, name='editar_membresia'),
     path('eliminar/<int:membresia_id>/', eliminar_membresia, name='eliminar_membresia'),

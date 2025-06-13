@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import MembresiaForm
 from django.shortcuts import render, redirect
 from .models import Membresia
+from dateutil.relativedelta import relativedelta 
 
 # Create your views here.
 def membresias(request):
@@ -18,6 +19,8 @@ def crear_membresia(request):
         if form.is_valid():
             metodo_pago = form.cleaned_data['metodo_pago']
             monto_pagado = form.cleaned_data['monto_pagado']
+            membresia = form.save(commit=False)
+            membresia.fecha_vencimiento = form.get_fecha_inicio() + relativedelta(months=1)
 
             if metodo_pago == 'efectivo':
                 cambio = monto_pagado - precio_membresia
@@ -25,10 +28,13 @@ def crear_membresia(request):
                     form.add_error('monto_pagado', 'El monto es insuficiente.')
                 else:
                     form.save()
-                    return redirect('membresias:crear_membresia')
+                    membresia.cambio = cambio
+                    membresia.save()
+                    return redirect('membresias:membresias')
             else:
-                form.save()
-                return redirect('membresias:crear_membresia')
+                membresia.cambio = 0
+                membresia.save()
+                return redirect('membresias:membresias')
     else:
         form = MembresiaForm()
 

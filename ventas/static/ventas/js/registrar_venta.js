@@ -102,6 +102,9 @@ confirmarVentaBtn.addEventListener("click", function () {
   formData.append("productos", JSON.stringify(selectedProducts));
   formData.append("total", total);
 
+  console.log(formData.get("productos"));
+  console.log(formData.get("total"));
+
   fetch(registrarVentaUrl, {
     method: "POST",
     headers: {

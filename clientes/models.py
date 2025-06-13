@@ -11,13 +11,13 @@ class Clientes(models.Model):
     def __str__(self):
         return self.nombre
     
-    @property
-    def membresia_activa(self):
-        try:
-            membresia = self.membresia_set.order_by('-fecha_vencimiento').first()
-            return bool(membresia and membresia.activa and membresia.fecha_vencimiento >= date.today())
-        except:
-            return False
+    # @property
+    # def membresia_activa(self):
+    #     try:
+    #         membresia = self.membresia_set.order_by('-fecha_vencimiento').first()
+    #         return bool(membresia and membresia.activa and membresia.fecha_vencimiento >= date.today())
+    #     except:
+    #         return False
 
 
 class RegistroAsistencia(models.Model):

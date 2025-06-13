@@ -113,7 +113,7 @@ def exportar_clientes_excel(request):
 
     # Datos
     for cliente in Clientes.objects.all():
-        membresia_activa = cliente.membresias.filter(activa=True, fecha_vencimiento__gte=date.today()).exists()
+        membresia_activa = cliente.membresia_set.filter(activa=True, fecha_vencimiento__gte=date.today()).exists()
         ws.append([
             cliente.nombre,
             cliente.correo,

@@ -18,6 +18,7 @@
     <table>
         <thead>
             <tr>
+                <th>ID del Cliente</th>
                 <th>Cliente</th>
                 <th>Fecha de inicio</th>
                 <th>Fecha de vencimiento</th>
@@ -27,9 +28,10 @@
         <tbody>
             {% for membresia in membresias %}
             <tr>
+                <td>{{ membresia.cliente.id }}</td>
                 <td>{{ membresia.cliente }}</td>
                 <td>{{ membresia.fecha_inicio }}</td>
-                <td>{{ membresia.fecha_vencimiento }} días</td>
+                <td>{{ membresia.fecha_vencimiento }}</td>
                 <td>{{ membresia.activa|yesno:"Activa,Inactiva" }}</td>
             </tr>
             {% empty %}

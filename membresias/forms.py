@@ -3,29 +3,19 @@ from .models import Membresia
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta  # Necesario para sumar meses
 
-METODOS_PAGO = (
-    ('efectivo', 'Efectivo'),
-    ('tarjeta', 'Tarjeta'),
-)
-
 class MembresiaForm(forms.ModelForm):
-    metodo_pago = forms.ChoiceField(choices=METODOS_PAGO, label='Método de Pago')
-    monto_pagado = forms.DecimalField(label='Monto Pagado', min_value=0, decimal_places=2)
-
     class Meta:
         model = Membresia
-        fields = ['cliente', 'fecha_inicio', 'fecha_vencimiento']
-
-    def __init__(self, *args, **kwargs):
-        super(MembresiaForm, self).__init__(*args, **kwargs)
-        
-        hoy = date.today()
-        proximo_mes = hoy + relativedelta(months=1)
-        
-        # Asigna fechas por defecto
-        self.fields['fecha_inicio'].initial = hoy
-        self.fields['fecha_vencimiento'].initial = proximo_mes
-
-        # Desactiva los campos para que no se puedan modificar
-        self.fields['fecha_inicio'].widget.attrs['readonly'] = True
-        self.fields['fecha_vencimiento'].widget.attrs['readonly'] = True
+        # fields = ['cliente', 'metodo_pago', 'monto_pagado', 'fecha_inicio', 'fecha_vencimiento']
+        fields = ['cliente', 'metodo_pago', 'monto_pagado']
+        widgets = {
+            'metodo_pago': forms.Select(attrs={'class': 'form-control'}),
+            'monto_pagado': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+        }
+        labels = {
+            'metodo_pago': 'Método de Pago',
+            'monto_pagado': 'Monto Pagado',
+        }
+    
+    def get_fecha_inicio(self):
+        return self.cleaned_data.get('fecha_inicio', date.today()) 
