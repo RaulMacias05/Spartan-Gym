@@ -47,7 +47,7 @@
         <td>{{ venta.id }}</td>
         <td>{{ venta.usuario.username }}</td>
         {% comment %} <td>{{ venta.cliente }}</td> {% endcomment %}
-        <td>{{ venta.fecha_venta }}</td>
+        <td>{{ venta.fecha_venta|date:"l d \d\e F \d\e Y" }}</td>
         <td>${{ venta.monto_total }}</td>
         <td>{{ venta.metodo_pago }}</td>
         <td>${{ venta.monto_pagado }}</td>

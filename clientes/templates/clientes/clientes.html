@@ -37,7 +37,7 @@
                 <td>{{ cliente.telefono }}</td>
                 <td>
                     {% if cliente.membresia_activa %}
-                        <a href="#" class="reg_producto">Registrar entrada</a>
+                    <a href="#" class="reg_producto" data-action="entrada">Registrar entrada</a>
                     {% else %}
                         <span class="no_activo">Cliente no activo</span>
                     {% endif %}
@@ -73,18 +73,22 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const botones = document.querySelectorAll('.reg_producto');
-    
+        
         botones.forEach(boton => {
             boton.addEventListener('click', function (e) {
                 e.preventDefault();
-                if (this.textContent.includes('entrada')) {
+
+                // Cambiar el texto y el atributo 'data-action'
+                if (this.dataset.action === 'entrada') {
+                    this.dataset.action = 'salida';
                     this.textContent = 'Registrar salida';
-                } else if (this.textContent.includes('salida')) {
+                } else if (this.dataset.action === 'salida') {
+                    this.dataset.action = 'entrada';
                     this.textContent = 'Registrar entrada';
                 }
             });
         });
     });
 </script>
-    
+
 {% endblock content %}
