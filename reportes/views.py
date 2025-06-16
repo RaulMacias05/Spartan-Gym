@@ -115,15 +115,12 @@ def exportar_clientes_excel(request):
 
     # Datos
     for cliente in Clientes.objects.all():
-<<<<<<< HEAD
         membresia_activa = cliente.membresia_set.filter(activa=True, fecha_vencimiento__gte=date.today()).exists()
-=======
         try:
             membresia_activa = cliente.membresia_set.filter(activa=True, fecha_vencimiento__gte=date.today()).exists()
         except Exception as e:
             membresia_activa = False  # En caso de error, asumimos que no tiene membresía activa
 
->>>>>>> 04326ae6ee06edb3c09b6162cdd51520a5832aaf
         ws.append([
             cliente.nombre,
             cliente.correo,
