@@ -19,7 +19,7 @@
             <img src="{% static 'img/logospartan.png' %}" alt="Logo Gimnasio" class="logo">
             <h2>Operaciones</h2>
             <ul>
-                <li><a href="{% url 'core:inicio' %}">Dashboard</a></li>
+                <li><a href="{% url 'core:inicio' %}">Inicio</a></li>
                 <li><a href="{% url 'usuarios:usuarios' %}">Usuarios</a></li>
                 <li><a href="{% url 'clientes:clientes' %}">Clientes</a></li>
                 <li><a href="{% url 'membresias:membresias' %}">Membresías</a></li>
@@ -31,6 +31,9 @@
         </nav>
     </header>
     <section class="content">
+        <h1 class="content-title">
+            {% block content_title %}{% endblock content_title %}
+        </h1>
         {% block content %}{% endblock content %}
     </section>
     {% block scripts %}{% endblock scripts %}

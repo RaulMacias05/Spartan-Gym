@@ -1,28 +1,54 @@
-.cajas {
+.dashboard {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 15px;
+}
+
+.stat-cards-cont{
+    grid-column: 1/3;
+    grid-row: 1/6;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    padding: 20px;
-}
-
-.caja {
-    background-color: #f5f5f5;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 7px;
     border-radius: 10px;
-    padding: 20px;
+}
+
+.stat-card{
+    border-radius: 10px;
+    color: white;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.titulo-caja {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 10px;
+.stat-card div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-
-.numero-caja {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #800000;
+.stat-card h3{
     margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 80%;
+}
+.stat-card p{
+    margin: 0;
+    font-size: 6.3rem;
+    font-weight: 400;
+    line-height: 80%;
+}
+
+.membresias { background-color: #f25d5d; }
+.clientes { background-color: #9de770; }
+.ventas { background-color: #f18647; }
+.visitas { background-color: #f48da4; }
+
+.placeholder {
+    background-color: #f0ede8;
+    border-radius: 10px;
 }
