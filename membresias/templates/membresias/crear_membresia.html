@@ -5,8 +5,12 @@
 <link rel="stylesheet" href="{% static 'membresias/css/crear_membresia.css' %}">
 {% endblock extra_head %}
 
+{% block content_title %}
+Crear membresía
+{% endblock content_title %}
+
 {% block content %}
-<h2>Crear Membresía</h2>
+
 <form method="post" class="registro-form">
     {% csrf_token %}
     {{ form.as_p }}

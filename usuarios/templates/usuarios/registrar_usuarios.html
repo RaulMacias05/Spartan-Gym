@@ -7,10 +7,11 @@
 <link rel="stylesheet" href="{% static 'usuarios/css/registro.css' %}">
 {% endblock extra_head %}
 
+{% block content_title %}
+Registrar nuevo usuario
+{% endblock content_title %}
 
 {% block content %}
-
-<h2>Registrar nuevo usuario</h2>
 
 <form method="post" class="registro-form">
   {% csrf_token %}

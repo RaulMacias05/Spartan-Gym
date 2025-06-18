@@ -8,8 +8,12 @@
 
 {% block title %}Inventario{% endblock title %}
 
+{% block content_title %}
+Inventario
+{% endblock content_title %}
+
 {% block content %}
-<h1>Inventario</h1>
+
 <div class="barra_sup">
   <input type="text" id="search" placeholder="Buscar producto...">
   <a href="{% url 'inventario:crear_producto' %}" class="reg_producto">Registrar Producto</a>

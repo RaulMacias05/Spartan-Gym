@@ -6,9 +6,11 @@
 <link rel="stylesheet" href="{% static 'usuarios/css/lista.css' %}">
 {% endblock extra_head %}
 
-{% block content %}
+{% block content_title %}
+Usuarios registrados
+{% endblock content_title %}
 
-<h2>Usuarios registrados</h2>
+{% block content %}
 
 <div class="barra_sup">
     <input type="text" id="search" placeholder="Buscar usuario...">
