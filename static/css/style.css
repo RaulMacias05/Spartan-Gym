@@ -4,8 +4,9 @@
     --header-button-color: #932928;
     --header-button-shadow: #bf3e13;
     --header-text-color: white;
-    --whiter-black: #060606;
     --logout-bg-color: #f2f0ec;
+    --reg-sale-button: #4CAF50;
+    --whiter-black: #303030;
 }
   
 *{

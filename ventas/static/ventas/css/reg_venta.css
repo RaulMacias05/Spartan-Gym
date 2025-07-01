@@ -1,55 +1,68 @@
-.content{
+.search-bar-cont {
+  margin-bottom: 20px;
+  left: 30%;
+}
+  
+.search-bar-cont input {
+  padding: 10px;
+  width: 50%;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.products_cont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-bottom: 50px;
+}
+  
+.product {
+  padding: 15px 15px 10px 15px;
+  width: 250px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition:  0.3s;
+  z-index: 100;
 }
 
-.buscador {
-    margin-bottom: 20px;
-    left: 30%;
-  }
-  
-.buscador input {
-    padding: 10px;
-    width: 50%;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-
-.productos_container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-.producto {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    width: 220px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition:  0.3s;
-    z-index: 100;
-  }
-
-.producto:hover {
-    transform: scale(1.05);
+.product:hover {
+  transform: scale(1.05);
 }
 
-.producto h3 {
-    margin: 10px 0;
-    font-size: 18px;
-    font-weight: bold;
-  }
+.product h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
   
-.producto p {
-    margin: 5px 0;
-  }
+.product p {
+  margin: 5px 0;
+}
 
-.producto img {
-  width: 80%;
+.prod-image-cont {
+  padding: 5px;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 5px 0 rgba(1, 1, 1, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.prod-image-cont img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .no_products {
@@ -64,23 +77,49 @@
   margin-top: 20px;
 }
 
-.bottom{
+.quantity-controler {
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity-controler button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.quantity {
+  margin: 0 10px
+}
+
+.remove{
+  border: 1px solid grey;
+  background-color: white;
+}
+
+.add {
+  border: none;
+  background-color: var(--header-button-color);
+  color: white;
+}
+
+.sale-summary {
+  margin-bottom: -100px;
+  padding: 3px 20px;
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
-}
-
-.venta_container {
-  margin-bottom: -100px;
-  padding: 3px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 15px;
   backdrop-filter: blur(5px);
   background-color: rgba(241, 241, 241, 0.5);
@@ -90,9 +129,9 @@
   transition: margin-bottom 0.3s ease-in-out;
 }
 
-.venta_container button{
-  padding: 15px 32px;
-  background-color: #4CAF50;
+.sale-summary button{
+  padding: 15px 30px;
+  background-color: var(--reg-sale-button);
   border: none;
   color: white;
   text-align: center;
@@ -101,34 +140,15 @@
   border-radius: 12px;
 }
 
-.venta_container p{
-  /* color: white; */
-  /* margin-right: 3vh; */
+.sale-summary p{
   font-size: 1.3rem;
 }
 
-.venta_modal {
-  display: none;
+.sale-modal-fade {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  box-shadow: 0 0 8px grey;
-  z-index: 1000;
-}
-
-.venta_modal h2{
-  width: 100%;
-  text-align: center;
-}
-
-.modal_overlay {
   display: none;
-  position: fixed;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -136,4 +156,110 @@
   backdrop-filter: blur(10px);
   background-color: rgb(1, 1, 1, .3);
   z-index: 999;
+}
+
+.sale-modal-dialog {
+  padding: 30px;
+  width: 350px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.sale-modal-content {
+  width: 100%;
+}
+
+.sale-modal-total-cont {
+  height: 100px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+}
+
+.sale-modal-total-cont p{
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: black;
+}
+
+.sale-modal-total-cont h3 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--reg-sale-button);
+}
+
+.sale-modal-form:invalid{
+  color: rgb(101, 101, 101);
+}
+
+.sale-modal-form:valid{
+  color: black;
+}
+
+.sale-modal-form label, .sale-modal-form p {
+  font-size: .9rem;
+  font-weight: 300;
+}
+
+.sale-modal-form select, .sale-modal-form input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 15px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  transition: border-color 0.2s;
+}
+
+.sale-modal-form select:hover, .sale-modal-form select:focus,
+.sale-modal-form input:hover, .sale-modal-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.sale-modal-form select option[value=""] {
+  color: rgb(165, 165, 165);
+}
+
+.sale-modal-amount-paid {
+  display: none;
+}
+
+.sale-modal-form-buttons-cont {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.sale-modal-form-buttons-cont button {
+  padding: 8px 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+#confirmSale {
+  background-color: var(--header-bg-color);
+  border: none;
+  color: white;
+}
+
+#cancelSale {
+  background-color: white;
+  border: 1px solid grey;
+  color: var(--whiter-black);
+}
+
+.sale-modal-change-cont {
+  display: none;
+  margin: 10px 0;
 }

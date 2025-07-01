@@ -14,17 +14,24 @@ Registrar venta
 
 {% block content %}
 
-<div class="buscador">
-  <input type="text" id="search" placeholder="Buscar producto...">
+<div class="search-bar-cont">
+  <input type="text" id="searchBar" placeholder="Buscar producto...">
 </div>
 
-<div class="productos_container">
+<div class="products_cont">
   
   {% for producto in productos %}
-  <div class="producto" data-id="{{ producto.idproducto }}" id="prod_{{ producto.idproducto }}">
-    <img src="{{ producto.imagen.url }}" width="200">
+  <div class="product" data-id="{{ producto.idproducto }}" data-price="{{ producto.precio }}" id="prod_{{ producto.idproducto }}">
+    <div class="prod-image-cont">
+      <img src="{{ producto.imagen.url }}">
+    </div>
     <h3>{{ producto.nombre }}</h3>
     <p>Precio: ${{ producto.precio }}</p>
+    <div class="quantity-controler">
+      <button class="remove">−</button>
+      <span class="quantity">0</span>
+      <button class="add">+</button>
+    </div>
   </div>
   {% empty %}
   <div class="no_products">Es necesario registrar productos en el inventario.</div>
@@ -32,25 +39,49 @@ Registrar venta
     
 </div>
 
-<div class="bottom">
-  <div id="venta_container" class="venta_container">
-    <button id="btn_registrar_venta">Registrar venta</button>
-    <p id="total_text">Total: $0.00</p>
-  </div>
+{% comment %} <div class="bottom">
+  
+</div> {% endcomment %}
+
+<div class="sale-summary" id="saleSummary">
+    <button id="btnRegisterSale">Registrar venta</button>
+    <p>
+      $<span id="totalAmount">0.00</span>
+    </p>
 </div>
 
-<!-- filepath: c:\Users\steme\OneDrive\Documents\Sexto Semestre\Metodologías del Desarrollo de Software\PIA\Spartan-Gym\ventas\templates\ventas\registrar_venta.html -->
-<div class="venta_modal" id="venta_modal">
-  <h2>Registrar Venta</h2>
-  <form id="venta_form" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p id="cambio_text">Cambio: </p>
-    <button type="button" id="confirmar_venta">Confirmar Venta</button>
-    <button type="button" id="cancelar_venta">Cancelar</button>
-  </form>
-</div>
-<div class="modal_overlay" id="modal_overlay"></div>
+<section class="sale-modal-fade" id="saleModalFade">
+  <div class="sale-modal-dialog">
+    <div class="sale-modal-content">
+
+      <div class="sale-modal-total-cont" >
+        <p>El total de la venta es</p>
+        <h3>$<span id="saleModalTotal">0.00</span></h3>
+      </div>
+
+      <div class="sale-modal-form" id="saleModalForm">
+        {% csrf_token %}
+
+        <div class="sale-form-fields">
+
+          <label for="id_metodo_pago">{{ form.metodo_pago.label }}</label>
+          {{ form.metodo_pago }}
+
+          <div class="sale-modal-amount-paid" id="amountPaidCont">
+            <label for="id_monto_pagado">{{ form.monto_pagado.label }}</label>
+            {{ form.monto_pagado }}
+            <p class="sale-modal-change-cont" id="changeCont">Cambio: $<span id="change"></span></p>
+          </div>
+
+        </div>
+        <div class="sale-modal-form-buttons-cont">
+          <button type="submit" id="confirmSale">Confirmar Venta</button>
+          <button type="button" id="cancelSale">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}
 
 
@@ -59,5 +90,5 @@ Registrar venta
 <script>
   const registrarVentaUrl = "{% url 'ventas:registrar_venta' %}";
 </script>
-<script src="{% static 'ventas/js/registrar_venta.js' %}"></script>
+<script src="{% static 'ventas/js/register_sale.js' %}"></script>
 {% endblock scripts %}
